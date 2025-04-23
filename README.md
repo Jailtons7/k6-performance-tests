@@ -1,6 +1,6 @@
 # PERFORMANCE TESTS WITH K6
 
-This repository contains the code af a hands-on focused course about performance tests with K6.
+This repository contains the code for a hands-on course on performance tests with K6.
 
 ### Runnning the tests:
 
