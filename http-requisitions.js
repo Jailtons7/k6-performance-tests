@@ -1,9 +1,9 @@
 import http from "k6/http";
 import { check } from "k6";
-import { Counter } from "k6/metrics";
-import { Gauge } from "k6/metrics";
-import { Rate } from "k6/metrics";
-import { Trend } from "k6/metrics";
+import { Counter } from "k6/metrics"; // Counter é uma métrica do tipo contador
+import { Gauge } from "k6/metrics"; // Gauge é uma métrica do tipo medidor
+import { Rate } from "k6/metrics"; // Rate é uma métrica do tipo taxa
+import { Trend } from "k6/metrics"; // Trend é uma métrica do tipo tendência
 
 export const options = {
   vus: 1,
@@ -20,6 +20,7 @@ export default function () {
   check(resp, {
     "status is 200": (r) => {
       if (r.status === 200) {
+        // metrica do tipo taxa
         http200Rate.add(1); // Adiciona 1 à taxa de sucesso se o status for 200
         return true;
       }
@@ -27,7 +28,10 @@ export default function () {
     "body is not empty": (r) => r.body.length > 0,
     "response time is less than 200ms": (r) => r.timings.duration < 250,
   });
+  // metrica do tipo contador
   httpQuantity.add(1); // Incrementa o contador de requisições HTTP
+  // metrica do tipo medidor
   httpBlokedDuration.add(resp.timings.blocked); // Adiciona o tempo bloqueado ao medidor
+  // metrica do tipo tendencia
   httpWatingRate.add(resp.timings.waiting); // Adiciona o tempo de espera à tendência
 }
