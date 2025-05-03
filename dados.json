@@ -1,0 +1,18 @@
+{
+    "crocodiles": [
+        {
+            "id": 1,
+            "name": "João",
+            "sex": "M",
+            "date_of_birthday": "1993-05-15",
+            "age": 30
+        }, 
+        {
+            "id": 2,
+            "name": "Maria",
+            "sex": "F",
+            "date_of_birthday": "1995-08-20",
+            "age": 28
+        }
+    ]
+}
