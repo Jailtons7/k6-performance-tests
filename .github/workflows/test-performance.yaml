@@ -24,6 +24,7 @@ jobs:
         run: |
           mkdir report
           mv index.html report
+          ls
 
       - name: step 4 - Upload k6 summary
         uses: actions/upload-artifact@v4
