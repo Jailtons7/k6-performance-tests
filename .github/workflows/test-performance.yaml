@@ -31,7 +31,7 @@ jobs:
           name: k6-summary-report
           path: report/index.html
       - name: step 4 - Publish k6 summary report
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
