@@ -19,18 +19,19 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: performance-test.js
-          # options: |
-          #   --vus 10
-          #   --duration 30s
-          #   --summary-export=./k6-summary.json
-          #   --out json=./k6-output.json
-      - run: ls & mkdir report & mv index.html report/
-      - name: step 3 - Upload k6 summary
+
+      - name: step 3 - Move artifact to folder
+        run: |
+          mkdir report
+          mv index.html report
+
+      - name: step 4 - Upload k6 summary
         uses: actions/upload-artifact@v4
         with:
           name: k6-summary-report
           path: report
-      - name: step 4 - Publish k6 summary report
+
+      - name: step 5 - Publish k6 summary report
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
