@@ -22,3 +22,9 @@ jobs:
           #   --duration 30s
           #   --summary-export=./k6-summary.json
           #   --out json=./k6-output.json
+      - run: ls & mkdir report & mv index.html report/
+      - name: step 3 - Upload k6 summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-summary-report
+          path: report/index.html
