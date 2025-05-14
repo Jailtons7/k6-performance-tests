@@ -15,6 +15,8 @@ import http from "k6/http";
 import { check } from "k6";
 import { SharedArray } from "k6/data";
 
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+
 export const options = {
   stages: [
     { duration: "5s", target: 10 }, // ramp up de 0 para 10 VUs em 10s
@@ -39,4 +41,10 @@ export default function () {
   check(res, {
     "status is 200": (r) => r.status === 200,
   });
+}
+
+export function handleSummary(data) {
+  return {
+    "index.html": htmlReport(data),
+  };
 }
