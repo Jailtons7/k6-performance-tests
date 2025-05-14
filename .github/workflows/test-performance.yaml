@@ -16,7 +16,7 @@ jobs:
       - name: step 2 - k6 run performance test
         uses: grafana/k6-action@v0.2.0
         with:
-          script: performance-test.js
+          filename: performance-test.js
           # options: |
           #   --vus 10
           #   --duration 30s
