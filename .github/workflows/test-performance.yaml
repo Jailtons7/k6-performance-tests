@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+permissions:
+  contents: write
 jobs:
   k6-load-test:
     runs-on: ubuntu-latest
@@ -28,3 +30,9 @@ jobs:
         with:
           name: k6-summary-report
           path: report/index.html
+      - name: step 4 - Publish k6 summary report
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: report
