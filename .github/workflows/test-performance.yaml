@@ -7,18 +7,18 @@ on:
     branches:
       - main
 jobs:
-  build: k6 load test
-  runs-on: ubuntu-latest
-  steps:
-    - name: step 1 - Checkout code
-      uses: actions/checkout@v4
-    
-    - name: step 2 - k6 run performance test
-      uses: grafana/k6-action@v2
-      with:
-        script: performance-test.js
-        # options: |
-        #   --vus 10
-        #   --duration 30s
-        #   --summary-export=./k6-summary.json
-        #   --out json=./k6-output.json
+  k6-load-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1 - Checkout code
+        uses: actions/checkout@v4
+      
+      - name: step 2 - k6 run performance test
+        uses: grafana/k6-action@v2
+        with:
+          script: performance-test.js
+          # options: |
+          #   --vus 10
+          #   --duration 30s
+          #   --summary-export=./k6-summary.json
+          #   --out json=./k6-output.json
